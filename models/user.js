@@ -90,20 +90,22 @@ const loginSchema = Joi.object({
     }),
 })
 
-// const updateSubscriptionSchema = Joi.object({
-//   subscription: Joi.string()
-//     .valid("starter", "pro", "business")
-//     .required()
-//     .messages({
-//       "any.required": "Missing required subscription field",
-//       "any.only":
-//         'Invalid subscription type. Valid values are "starter", "pro", or "business"',
-//     }),
-// });
+ //додаткове завдання hw-04 Оновлення підписки (subscription)
+const updateSubscriptionSchema = Joi.object({
+  subscription: Joi.string()
+    .valid("starter", "pro", "business")
+    .required()
+    .messages({
+      "any.required": `missing required "subscription" field`,
+      "any.only":
+        'Invalid subscription type. Valid values are "starter", "pro", or "business"',
+    }),
+});
+
 const schemas = {
     registerSchema,
     loginSchema,
-    // updateSubscriptionSchema,
+    updateSubscriptionSchema,
 
   };
 

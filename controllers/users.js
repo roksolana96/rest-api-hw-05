@@ -84,24 +84,24 @@ const logout = async(req, res) => {
 }
 
 
+ //додаткове завдання hw-04 Оновлення підписки (subscription)
 
-// const updateSubscription = async (req, res) => {
-//     const { _id: id } = req.user;
-//     const { subscription } = req.body;
-//     const result = await User.findByIdAndUpdate(
-//       id,
-//       { subscription },
-//       { new: true, select: "email subscription" }
-//     );
-//     if (!result) {
-//       throw newError(404, "Not found");
-//     }
-//     res.status(200).json(result);
-//   };
+const updateSubscription = async (req, res) => {
+    const { _id } = req.user;
+    const { subscription } = req.body;
+    const result = await User.findByIdAndUpdate(
+    _id,
+      { subscription },
+      { new: true, select: "email subscription" }
+    );
+    if (!result) {
+      throw newError(404, "Not found");
+    }
+    res.status(200).json(result);
+  };
 
 
 //avatar
-
 
 const updateAvatar = async (req, res) => {
     const { _id } = req.user;
@@ -126,9 +126,9 @@ const updateAvatar = async (req, res) => {
     login:ctrlWrapper(login),
     getCurrent: ctrlWrapper(getCurrent),
     logout: ctrlWrapper(logout),
-    // updateSubscription: ctrlWrapper(updateSubscription),
+
+    updateSubscription: ctrlWrapper(updateSubscription),
 
     updateAvatar: ctrlWrapper(updateAvatar),
-
 
   };
